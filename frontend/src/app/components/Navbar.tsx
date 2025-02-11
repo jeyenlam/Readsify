@@ -1,13 +1,8 @@
-import { useRouter } from 'next/navigation'
 import React from 'react'
+import { useAppContext } from '../provider'
 
 const Navbar = () => {
-  const router = useRouter()
-  
-  const handleLogOut = () => {
-    localStorage.clear()
-    router.push('/auth')
-  }
+  const { handleLogOut } = useAppContext()
   
   return (
     <nav>

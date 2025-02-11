@@ -16,7 +16,7 @@ class SignUpView(APIView):
     email = request.data.get('email')
     
     # Check if email is already used
-    if User.objects.filter(email).exists():
+    if User.objects.filter(email=email).exists():
       return Response({
         'detail': 'Email is already been used. Please log in.'
       }, status=status.HTTP_400_BAD_REQUEST)

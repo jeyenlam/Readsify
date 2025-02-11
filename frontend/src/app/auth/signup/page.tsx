@@ -1,33 +1,22 @@
 'use client'
 import React, { useState } from 'react'
-import axios from 'axios'
+import { useAppContext } from '@/app/provider'
 
 const SignUp = () => {
+  const { handleSignUp } = useAppContext()
   const [signUpFormData, setSignUpFormData] = useState({
     username: '',
     email: '',
     password: ''
   })
 
-  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost:8000/api/signup/', signUpFormData);
-      const { access, refresh } = response.data
-      
-      localStorage.setItem('accessToken', access)
-      localStorage.setItem('refreshToken', refresh)
-
-    } catch (error) {
-      alert(`An account with this email exists. Try login`)
-      console.log('Signup Failed', error)
-    }
-  }
-
   return (
     <div>
-      <form onSubmit={handleOnSubmit} className='bg-slate-200'>
+      <form onSubmit={(e) => {
+          e.preventDefault()
+          handleSignUp(signUpFormData)
+
+      }} className='bg-slate-200'>
         <div className='grid grid-cols-2'>
           <label>Username: </label>
           <input 
