@@ -1,12 +1,11 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
 
-const LogIn = () => {
-  const router = useRouter()
-  const [logInFormData, setLogInFormData] = useState({
+const SignUp = () => {
+  const [signUpFormData, setSignUpFormData] = useState({
     username: '',
+    email: '',
     password: ''
   })
 
@@ -14,24 +13,17 @@ const LogIn = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/api/login/', logInFormData);
+      const response = await axios.post('http://localhost:8000/api/signup/', signUpFormData);
       const { access, refresh } = response.data
-      console.log(response)
-
+      
       localStorage.setItem('accessToken', access)
       localStorage.setItem('refreshToken', refresh)
 
-      router.push('/')
-
     } catch (error) {
+      alert(`An account with this email exists. Try login`)
       console.log('Signup Failed', error)
     }
   }
-
-  useEffect(() => {
-    
-  }
-  ,[])
 
   return (
     <div>
@@ -41,15 +33,22 @@ const LogIn = () => {
           <input 
             type='text'
             name='name' 
-            value={logInFormData.username}
-            onChange={(e) => setLogInFormData({...logInFormData, username: e.target.value})}
+            value={signUpFormData.username}
+            onChange={(e) => setSignUpFormData({...signUpFormData, username: e.target.value})}
+            required/>
+          <label>Email: </label>
+          <input 
+            type='email'
+            name='email'
+            value={signUpFormData.email}
+            onChange={(e) => setSignUpFormData({...signUpFormData, email: e.target.value})}
             required/>
           <label>Password: </label>
           <input
             type='password'
             name='password'
-            value={logInFormData.password}
-            onChange={(e) => setLogInFormData({...logInFormData, password: e.target.value})}
+            value={signUpFormData.password}
+            onChange={(e) => setSignUpFormData({...signUpFormData, password: e.target.value})}
             required/>
         </div>
         <button type='submit'>Log in</button>
@@ -58,4 +57,4 @@ const LogIn = () => {
   )
 }
 
-export default LogIn
+export default SignUp

@@ -1,11 +1,13 @@
 'use client'
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { ok } from 'node:assert'
 
-const SignUp = () => {
-  const [signUpFormData, setSignUpFormData] = useState({
+const LogIn = () => {
+  const router = useRouter()
+  const [logInFormData, setLogInFormData] = useState({
     username: '',
-    email: '',
     password: ''
   })
 
@@ -13,15 +15,17 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/api/signup/', signUpFormData);
-      
+      const response = await axios.post('http://localhost:8000/api/login/', logInFormData);
       const { access, refresh } = response.data
       console.log(response)
 
       localStorage.setItem('accessToken', access)
       localStorage.setItem('refreshToken', refresh)
+      router.push('/')
+
     } catch (error) {
       console.log('Signup Failed', error)
+      alert(`Signup Failed: ${error}`)
     }
   }
 
@@ -33,22 +37,15 @@ const SignUp = () => {
           <input 
             type='text'
             name='name' 
-            value={signUpFormData.username}
-            onChange={(e) => setSignUpFormData({...signUpFormData, username: e.target.value})}
-            required/>
-          <label>Email: </label>
-          <input 
-            type='email'
-            name='email'
-            value={signUpFormData.email}
-            onChange={(e) => setSignUpFormData({...signUpFormData, email: e.target.value})}
+            value={logInFormData.username}
+            onChange={(e) => setLogInFormData({...logInFormData, username: e.target.value})}
             required/>
           <label>Password: </label>
           <input
             type='password'
             name='password'
-            value={signUpFormData.password}
-            onChange={(e) => setSignUpFormData({...signUpFormData, password: e.target.value})}
+            value={logInFormData.password}
+            onChange={(e) => setLogInFormData({...logInFormData, password: e.target.value})}
             required/>
         </div>
         <button type='submit'>Log in</button>
@@ -57,4 +54,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default LogIn

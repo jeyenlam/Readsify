@@ -27,3 +27,11 @@ input {
 button {
   @apply px-2 border rounded-md bg-blue-500 text-white;
 }
+
+nav {
+  @apply flex gap-x-4 justify-end p-4 border-b-2
+}
+
+nav ul {
+  @apply flex gap-x-4
+}
