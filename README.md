@@ -3,8 +3,8 @@ Readsify is a AI-powered web app that offers personalized book recommendations a
 
 ## Table of Contents
 - [Demo]()
-- [Inspiration](https://github.com/jeyenlam/Readsify/edit/main/README.md#inspiration)
-- [Built with](https://github.com/jeyenlam/Readsify/edit/main/README.md#built-with)
+- [Inspiration](https://github.com/jeyenlam/Readsify/blob/main/README.md#inspiration)
+- [Built with](https://github.com/jeyenlam/Readsify/blob/main/README.md#built-with)
 - [Architecture]()
 
 ## Inspiration  
