@@ -3,9 +3,9 @@ Readsify is a AI-powered web app that offers personalized book recommendations a
 
 ## Table of Contents
 - [Demo]()
-- [Inspiration](https://github.com/jeyenlam/Readsify/blob/main/README.md#inspiration)
-- [Built with](https://github.com/jeyenlam/Readsify/blob/main/README.md#built-with)
-- [Architecture]()
+- [Inspiration](https://github.com/jeyenlam/Readsify#inspiration)
+- [Built with](https://github.com/jeyenlam/Readsify#built-with)
+- [Architecture](#architecture)
 
 ## Inspiration  
 Readsify started from a problem I’ve faced as a book reader—spending more time searching for the perfect book than actually reading. It’s frustrating when the hunt for something enjoyable takes so much energy that it drains the excitement. That’s why I created Readsify. It’s a web app that offers personalized book recommendationss, making it easy to discover books that match your interests. It's also featured a digital bookshelf where you can easily manage books you’ve read or want to read. I built Readsify with a motto of no more endless searching, just more reading.
