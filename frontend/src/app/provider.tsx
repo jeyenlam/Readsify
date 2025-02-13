@@ -31,6 +31,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
     email: '',
   });
 
+  // >> AUTHENTICATION
   const handleLogIn = async (logInFormData: Object) => {
     try {
       const response = await axios.post('http://localhost:8000/api/login/', logInFormData);
@@ -67,6 +68,9 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.clear()
     router.push('/auth')
   }
+  
+  // >> USER INFO
+
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken')

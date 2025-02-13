@@ -18,6 +18,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden
 }
 
 input {
@@ -29,9 +30,25 @@ button {
 }
 
 nav {
-  @apply flex gap-x-4 justify-end p-4 border-b-2
+  @apply bg-zinc-50 flex gap-x-4 justify-end p-4 border-b-2 w-screen
 }
 
 nav ul {
   @apply flex gap-x-4
+}
+
+.chatbot-outter-layout {
+  @apply w-screen h-screen border bg-slate-100 flex flex-col items-center
+}
+
+.chatbot-convo-frame {
+  @apply w-screen flex-1 bg-slate-100 px-4
+}
+
+.chatbot-prompt-frame{
+  @apply w-5/6 mb-10 h-48 border bg-slate-200 px-4 flex flex-col justify-center items-center gap-4 rounded-3xl
+}
+
+.chatbot-prompt-frame input{
+  @apply w-full h-28 bg-transparent border-transparent outline-none
 }
