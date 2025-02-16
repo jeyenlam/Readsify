@@ -8,8 +8,8 @@ const Book: React.FC<{ book: BookType }> = ({ book }) => {
       <div className='w-96 flex flex-col gap-4'>
         <div>
           <h1>{book.title}</h1>
-          <p className='text-sm opacity-50'>{book.authors.join(', ')}</p>
-          <p className='text-xs opacity-50'>{book.categories.join(', ')}</p>
+          <p className='text-sm opacity-50'>{book.authors}</p>
+          <p className='text-xs opacity-50'>{book.categories}</p>
         </div>
         <p className='opacity-90 text-sm'>{book.description}</p>
       </div>      

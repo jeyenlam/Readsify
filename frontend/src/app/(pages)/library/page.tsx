@@ -1,7 +1,7 @@
 'use client'
 import Navbar from '@/app/components/Navbar'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Book as BookType } from '@/app/lib/interface'
 import Book from '@/app/components/Book'
 
@@ -11,6 +11,7 @@ const Library = () => {
   const accessToken = localStorage.getItem('accessToken');
   const [searchTerms, setSearchTerms] = useState('')
   const [book, setBook] = useState<BookType>()
+  const [booksOnShelf, setBooksOnShelf] = useState<BookType[]>([])
 
   const handleSearchBook = async (searchTerms: String) => {
     console.log(accessToken)
@@ -73,6 +74,30 @@ const Library = () => {
     }
   }
 
+  const handleFetchBooksOnShelf = async () => {
+    try {
+      const response = await axios.get(`${NEXT_PUBLIC_BACKEND_API_URL}/books/fetch-books-on-shelf/`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+      })
+
+      const fetchedBooksOnShelf : BookType[] = response.data
+      setBooksOnShelf(fetchedBooksOnShelf)
+
+      console.log(response.data)
+
+    } catch (error){
+      console.log(`Failed to Fetch Books On Shelf:`, error)
+    }
+
+  }
+
+  useEffect(() => {
+    handleFetchBooksOnShelf()
+  }, [])
+
   return (
     <div className="flex flex-col h-screen justify-start items-start">
       <Navbar/>
@@ -91,6 +116,11 @@ const Library = () => {
       </div>
       <div className='p-4 flex-1 flex-col'>
         <h1 className='text-2xl border-b-4'>My Book Shelf</h1>
+        <div className='flex'>
+          { booksOnShelf && 
+            booksOnShelf.map((bookOnShelf) => <Book key={bookOnShelf.title} book={bookOnShelf}/>)
+          }
+        </div>
 
       </div>
   </div>

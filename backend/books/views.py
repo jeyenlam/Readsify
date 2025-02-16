@@ -5,8 +5,10 @@ import json
 import os
 from django.utils.decorators import method_decorator
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .models import Book, UserBook
+from .serializers import BookSerializer
 
 
 GOOGLE_BOOKS_API_KEY = os.environ.get('GOOGLE_BOOKS_API_KEY')
@@ -64,3 +66,15 @@ class AddBookView(APIView):
         else:
             return JsonResponse({'message': 'Book already exists in your shelf'}, status=200)
 
+# @method_decorator(csrf_exempt, name='dispatch')
+class FetchBooksOnShelfView(APIView):    
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):        
+        user = request.user
+    
+        user_books = UserBook.objects.filter(user=user).select_related('book')
+        books = [user_book.book for user_book in user_books]
+        
+        serializer = BookSerializer(books, many=True)
+        return Response(serializer.data)
