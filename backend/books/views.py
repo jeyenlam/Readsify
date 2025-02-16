@@ -5,22 +5,21 @@ import json
 import os
 from django.utils.decorators import method_decorator
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from .models import Book, UserBook
+
 
 GOOGLE_BOOKS_API_KEY = os.environ.get('GOOGLE_BOOKS_API_KEY')
 GOOGLE_BOOKS_API_URL = os.environ.get('GOOGLE_BOOKS_API_URL')
 
 @method_decorator(csrf_exempt, name='dispatch')
 class FetchBookInfoView(APIView):    
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
-    def post(self, request):
-        
-        print('ji')        
-        print(GOOGLE_BOOKS_API_URL)
-        print(GOOGLE_BOOKS_API_KEY)
-    
+    def post(self, request):    
         searchTerms = json.loads(request.body).get('searchTerms')
+        user = request.user
+        print(user)
         
         if searchTerms:
             params = {'q': searchTerms, 'key': GOOGLE_BOOKS_API_KEY}
@@ -32,3 +31,36 @@ class FetchBookInfoView(APIView):
                 return JsonResponse({'error': 'Failed to fetch book info'}, status=response.status_code)
                     
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class AddBookView(APIView):    
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        print('Here')
+        data = json.loads(request.body)
+        user = request.user
+        
+        title =  data.get('title')
+        authors = ', '.join(data.get('authors', []))
+        thumbnail = data.get('thumbnail')
+        description = data.get('description')
+        categories = ', '.join(data.get('categories', []))
+        
+        book, created = Book.objects.get_or_create(
+            title=title,
+            authors=authors,
+            defaults={
+                'thumbnail': thumbnail,
+                'description': description,
+                'categories': categories,
+            }
+        )
+        
+        userBook, userBookCreated = UserBook.objects.get_or_create(user=user, book=book)
+        if userBookCreated:
+            return JsonResponse({'message': 'Book added successfully!'}, status=201)
+        else:
+            return JsonResponse({'message': 'Book already exists in your shelf'}, status=200)
+
