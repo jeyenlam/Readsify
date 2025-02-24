@@ -48,7 +48,6 @@ const Library = () => {
             booksOnShelf.map((bookOnShelf) => <Book key={bookOnShelf.title} book={bookOnShelf} fullyDisplayed={false}/>)
           }
         </div>
-
       </div>
   </div>
   )

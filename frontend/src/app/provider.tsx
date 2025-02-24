@@ -88,6 +88,60 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.clear()
     router.push('/auth')
   }
+
+  const refreshAccessToken = async () => {
+    const refreshToken = localStorage.getItem('refreshToken')
+    if (!refreshToken) {
+      console.error('No refresh token found.')
+      return null as string | null
+    }
+
+    try {
+      const response = await axios.post(`${NEXT_PUBLIC_BACKEND_API_URL}/token/refresh/`, {
+        refresh: refreshToken
+      })
+
+      const newAccessToken = response.data.access
+      console.log(newAccessToken)
+      localStorage.setItem('accessToken', newAccessToken)
+      return newAccessToken
+
+    } catch (error){
+      console.error(`Failed to Refresh Access Token: `, error)
+      return null
+    }
+  }
+
+  const fetchProtectedData = async () => {
+    let accessToken = localStorage.getItem('accessToken');
+  
+    try {
+      const response = await axios.get(`${NEXT_PUBLIC_BACKEND_API_URL}/protected/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+      return response.data;
+    } catch (error) {
+      
+      if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
+        accessToken = await refreshAccessToken() ?? null;
+        if (accessToken) {
+          const response = await axios.get(`${NEXT_PUBLIC_BACKEND_API_URL}/protected/`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          });
+          return response.data;
+        } else {
+          console.error('Unable to refresh access token, please log in again.');
+        }
+      } else {
+        console.error('API request failed:', error);
+      }
+    }
+  };
+  
   
   // >> LIBRARY
   const handleSearchBook = async (searchTerms: String) => {
@@ -202,11 +256,12 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken')
+    
     if (!accessToken) {
       router.push('/auth')
     }
 
-    console.log(accessToken)
+    fetchProtectedData()
   }, [])
 
   return (
