@@ -40,7 +40,6 @@ class AddBookView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        print('Here')
         data = json.loads(request.body)
         user = request.user
         
@@ -78,3 +77,26 @@ class FetchBooksOnShelfView(APIView):
         
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
+    
+    
+@method_decorator(csrf_exempt, name='dispatch')
+class DeleteBookView(APIView):    
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request):
+        data = json.loads(request.body)
+        user = request.user
+        title = data.get('title')
+        
+        try: 
+            book = Book.objects.get(title=title)
+        except Book.DoesNotExist:
+            return Response({"error": "Book not found."}, status=404)     
+        
+    
+        try:
+            userBook = UserBook.objects.get(user=user, book=book )
+            userBook.delete()
+            return Response({"message": "Book removed from shelf."}, status=200)
+        except UserBook.DoesNotExist:
+            return Response({"error": "Book not found in your shelf."}, status=404)
