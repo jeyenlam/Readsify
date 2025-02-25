@@ -7,10 +7,8 @@ const ChatBot = () => {
       <div className='chatbot-convo-frame'></div>
       <div className='chatbot-prompt-frame'>
         <input type='text' placeholder='Ask me anything about books!'/>
-        <button>Submit</button>
+        <button className='default-button'>Submit</button>
       </div>
-      
-
     </div>
   )
 }

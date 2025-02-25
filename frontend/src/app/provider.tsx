@@ -1,6 +1,6 @@
 'use client';
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Book as BookType } from '@/app/lib/interface'
 
@@ -10,6 +10,8 @@ interface IAppContext {
   searchTerms: string
   booksOnShelf: BookType[]
   newBookSaved: boolean
+  isActive: string
+  setIsActive: React.Dispatch<React.SetStateAction<string>>
   setUser: React.Dispatch<React.SetStateAction<Object>>
   handleLogOut: () => void
   handleLogIn: (logInFormData: Object) => Promise<void>
@@ -50,6 +52,9 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [book, setBook] = useState<BookType | null>(null)
   const [booksOnShelf, setBooksOnShelf] = useState<BookType[]>([])
   const [newBookSaved, setNewBookSaved] = useState(false)
+  const [isActive, setIsActive] = useState('library')
+  const pathName = usePathname()
+
 
   // >> AUTHENTICATION
   const handleLogIn = async (logInFormData: Object) => {
@@ -123,7 +128,6 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
       });
       return response.data;
     } catch (error) {
-      
       if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
         accessToken = await refreshAccessToken() ?? null;
         if (accessToken) {
@@ -135,6 +139,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
           return response.data;
         } else {
           console.error('Unable to refresh access token, please log in again.');
+          router.push('/auth')
         }
       } else {
         console.error('API request failed:', error);
@@ -252,17 +257,16 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   }
 
-
-
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken')
     
     if (!accessToken) {
       router.push('/auth')
     }
-
+      
+    setIsActive(pathName)
     fetchProtectedData()
-  }, [])
+  }, [pathName])
 
   return (
     <AppContext.Provider 
@@ -272,6 +276,8 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
         newBookSaved,
         searchTerms,
         booksOnShelf,
+        isActive,
+        setIsActive,
         setNewBookSaved,
         setBooksOnShelf,
         setBook,
