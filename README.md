@@ -2,11 +2,11 @@
 Readsify is an AI-powered web app that features an multi-filters book recommender system, a chatbot to converse about book and a digital bookshelf.
 
 ## Table of Contents
-- [Demo](https://github.com/jeyenlam/Readsify#demo)
-- [Inspiration](https://github.com/jeyenlam/Readsify#inspiration)
-- [Feature](https://github.com/jeyenlam/Readsify#features)
-- [Built with](https://github.com/jeyenlam/Readsify#built-with)  
-- [Architecture](https://github.com/jeyenlam/Readsify#inspiration#architecture)
+- [Demo](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#demo)
+- [Inspiration](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#inspiration)
+- [Feature](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#features)
+- [Built with](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#built-with)  
+- [Architecture](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#architectur)
 
 ## Demo  
 
