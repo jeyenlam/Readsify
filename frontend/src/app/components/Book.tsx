@@ -1,14 +1,10 @@
 "use client"
 import React from 'react'
 import { Book as BookType } from '../lib/interface'
-import axios from 'axios'
 import { useAppContext } from '../provider'
-
-const NEXT_PUBLIC_BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL
 
 const Book: React.FC<{ book: BookType, fullyDisplayed: boolean }> = ({ book, fullyDisplayed }) => {
   const { handleDeleteBookFromShelf } = useAppContext()
-  
   
   return (
     (fullyDisplayed ? <div className='flex gap-4 rounded-sm p-2'>

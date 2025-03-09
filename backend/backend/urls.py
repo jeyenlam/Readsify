@@ -5,10 +5,9 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     
 )
-from users.views import SignUpView
-from users.views import LogInView
+from users.views import SignUpView, LogInView, ProtectedView
 from books.views import FetchBookInfoView, AddBookView, FetchBooksOnShelfView, DeleteBookView
-from users.views import ProtectedView
+from chat.views import Chat
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,5 +20,6 @@ urlpatterns = [
     path('api/books/add-book/', AddBookView.as_view(), name='add_book'),
     path('api/books/fetch-books-on-shelf/', FetchBooksOnShelfView.as_view(), name='fetch_books_on_shelf'),
     path('api/books/delete-book/', DeleteBookView.as_view(), name='delete_book'),
+    path('api/chat/', Chat.as_view(), name='chat'),
 
 ]

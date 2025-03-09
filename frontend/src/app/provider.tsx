@@ -136,10 +136,11 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
               Authorization: `Bearer ${accessToken}`
             }
           });
+          router.push('/')
           return response.data;
         } else {
           console.error('Unable to refresh access token, please log in again.');
-          router.push('/auth')
+          router.push('/auth/login')
         }
       } else {
         console.error('API request failed:', error);
@@ -260,10 +261,11 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken')
     
-    if (!accessToken) {
-      router.push('/auth')
-    }
+    // if (!accessToken) {
+    //   router.push('/auth')
+    // }
       
+
     setIsActive(pathName)
     fetchProtectedData()
   }, [pathName])

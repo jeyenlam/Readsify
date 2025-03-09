@@ -10,7 +10,7 @@ const LogIn = () => {
   })
 
   return (
-    <div>
+    <div className='flex justify-center'>
       <form 
         onSubmit={(e) => {
           e.preventDefault(); 
@@ -28,7 +28,7 @@ const LogIn = () => {
             onChange={(e) => setLogInFormData({...logInFormData, password: e.target.value})}
           />
         </div>
-        <button type='submit'>Log in</button>
+        <button className='default-button' type='submit'>Log in</button>
       </form>
     </div>
   )
