@@ -6,7 +6,7 @@ Readsify is an AI-powered web app that features an multi-filters book recommende
 - [Inspiration](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#inspiration)
 - [Feature](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#features)
 - [Built with](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#built-with)  
-- [Architecture](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#architectur)
+- [Architecture](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#architecture)
 
 ## Demo  
 
