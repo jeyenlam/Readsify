@@ -26,7 +26,7 @@ body {
 }
 
 input {
-  @apply bg-slate-50 border rounded-md
+  @apply bg-slate-50 border rounded-md outline-none p-1 border-slate-300
 }
 
 .default-button {
