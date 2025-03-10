@@ -1,20 +1,23 @@
 # Readsify
-Readsify is a AI-powered web app that offers personalized book recommendations and a digital bookshelf.
+Readsify is an AI-powered web app that features an multi-filters book recommender system, a chatbot to converse about book and a digital bookshelf.
 
 ## Table of Contents
-- [Demo]()
-- [Inspiration](https://github.com/jeyenlam/Readsify#inspiration)
-- [Built with](https://github.com/jeyenlam/Readsify#built-with)
-- [Architecture](#architecture)
+- [Demo](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#demo)
+- [Inspiration](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#inspiration)
+- [Feature](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#features)
+- [Built with](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#built-with)  
+- [Architecture](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#architecture)
+
+## Demo  
 
 ## Inspiration  
-Readsify started from a problem I’ve faced as a reader—spending more time searching for the perfect book than actually reading. It’s frustrating when the hunt for something enjoyable takes so much energy that it drains the excitement. That’s how Readsify was developed, it's a web app that helps ease these common reader problems and was built with a motto of "more reading, less searching".
+Readsify started from a problem I’ve faced as a reader—spending more time searching for the perfect book than actually reading. It’s frustrating when the hunt for something enjoyable takes so much energy that it drains the excitement. That's why I developed Readsify, a web app that helps ease these common reader problems.
 
 ## Features
-🔒 Authentication and authorization for a secured book management system  
-⚙️ AI-powered personalized book recommendation system  
-📚 Digital book shelf to manage books 
-🤖 A chatbot (maybe book-fine-tuned, future integration)
+- 🔒 **Authentication and authorization**: Signup/Login/Logout for a personalized and secured book management system   
+- ⚙️ **AI-powered book recommendater system**: Featured with a variety of filters to generate the most personalized book recs  
+- 📚 **Multi-featured Library**: Consist of a search bar to look up books info and a digital space to manage books   
+- 🤖 **Chatbot**: Use GPT3-turbo model to converse with users about book, another way to ask for recommendations    
 
 ## Built with  
 - [Next.js](https://nextjs.org/)
@@ -28,5 +31,5 @@ Readsify started from a problem I’ve faced as a reader—spending more time se
 
 ## Architecture
 
-## Development Highlights
-- Data Engineering: My first time with a more realistic data engineering experience. I've learned about a decent process of data engineering from looking at datasets and eye-balled evaluate them, pick the best-fit among dozen even hundred datasets, then the process of tool evaulate that dataset and clean it.
+## My experience with this project
+...
