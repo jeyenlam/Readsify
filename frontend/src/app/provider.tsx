@@ -11,6 +11,8 @@ interface IAppContext {
   booksOnShelf: BookType[]
   newBookSaved: boolean
   isActive: string
+  auth: string
+  setAuth: React.Dispatch<React.SetStateAction<string>>
   setIsActive: React.Dispatch<React.SetStateAction<string>>
   setUser: React.Dispatch<React.SetStateAction<Object>>
   handleLogOut: () => void
@@ -54,7 +56,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [newBookSaved, setNewBookSaved] = useState(false)
   const [isActive, setIsActive] = useState('library')
   const pathName = usePathname()
-
+  const [auth, setAuth] = useState('login')
 
   // >> AUTHENTICATION
   const handleLogIn = async (logInFormData: Object) => {
@@ -140,7 +142,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
           return response.data;
         } else {
           console.error('Unable to refresh access token, please log in again.');
-          router.push('/auth/login')
+          router.push('/auth/')
         }
       } else {
         console.error('API request failed:', error);
@@ -261,10 +263,9 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken')
     
-    // if (!accessToken) {
-    //   router.push('/auth')
-    // }
-      
+    if (!accessToken) {
+      router.push('/auth')
+    }
 
     setIsActive(pathName)
     fetchProtectedData()
@@ -279,6 +280,8 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
         searchTerms,
         booksOnShelf,
         isActive,
+        auth,
+        setAuth,
         setIsActive,
         setNewBookSaved,
         setBooksOnShelf,

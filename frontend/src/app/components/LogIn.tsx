@@ -1,11 +1,11 @@
 'use client'
 import React, { useState } from 'react'
 import { useAppContext } from '@/app/provider'
-import logo from '../../../../public/R.png'
+import logo from '../../../public/R.png'
 import Image from 'next/image'
 
 const LogIn = () => {
-  const { handleLogIn } = useAppContext()
+  const { handleLogIn, setAuth} = useAppContext()
   const [logInFormData, setLogInFormData] = useState({
     username: '',
     password: ''
@@ -45,7 +45,7 @@ const LogIn = () => {
         <hr/>
         <div className='flex gap-2 col-span-2 items-center justify-center'>
           <p>Don't have an account?</p>
-          <a href='/auth/signup' className='hover:text-teal-600'>Sign up</a>
+          <button className='hover:text-teal-600' onClick={() => setAuth("signup")}>Sign up</button>
         </div>
       </form>
     </div>
