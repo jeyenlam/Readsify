@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
 from users.views import SignUpView, LogInView, ProtectedView
 from books.views import FetchBookInfoView, AddBookView, FetchBooksOnShelfView, DeleteBookView
 from chat.views import Chat
+from recommender.views import Recommender
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,5 +22,5 @@ urlpatterns = [
     path('api/books/fetch-books-on-shelf/', FetchBooksOnShelfView.as_view(), name='fetch_books_on_shelf'),
     path('api/books/delete-book/', DeleteBookView.as_view(), name='delete_book'),
     path('api/chat/', Chat.as_view(), name='chat'),
-
+    path('api/recommender/', Recommender.as_view(), name='recommender'),
 ]

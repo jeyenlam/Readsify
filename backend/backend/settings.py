@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'users',
     'books',
     'chat',
+    'recommender',
 ]
 
 MIDDLEWARE = [

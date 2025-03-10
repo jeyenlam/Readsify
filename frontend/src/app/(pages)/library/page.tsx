@@ -25,7 +25,7 @@ const Library = () => {
   }, [setBooksOnShelf, newBookSaved])
 
   return (
-    <div className="flex flex-col h-full justify-start items-start overflow-y-scrollable h-screen">
+    <div className="flex flex-col justify-start items-start overflow-y-scrollable h-screen">
       <Navbar/>
       <div className='p-2 w-screen gap-4 flex justify-end bg-slate-100'>
         <input className='bg-transparent h-12 border-none outline-none p-2 w-60 text-zinc-500' type='text' required placeholder='Search a book' onChange={(e) => setSearchTerms(e.target.value)}/>

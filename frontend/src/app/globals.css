@@ -47,7 +47,7 @@ nav ul {
 }
 
 .chatbot-convo-frame {
-  @apply h-96 overflow-y-scroll bg-slate-100 px-8 sm:px-32 tracking-wide leading-loose
+  @apply w-full h-96 overflow-y-scroll bg-slate-100 px-8 sm:px-32 tracking-wide leading-loose
 }
 
 .chatbot-prompt-frame{
