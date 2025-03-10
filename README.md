@@ -30,6 +30,7 @@ Readsify started from a problem I’ve faced as a reader—spending more time se
 - [TailwindCSS](https://tailwindcss.com/)
 
 ## Architecture
+![Readsify (1)](https://github.com/user-attachments/assets/20b391f0-5a6b-481e-b718-6b5ffd07c8eb)
 
 ## My experience with this project
 ...
