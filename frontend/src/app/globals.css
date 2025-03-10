@@ -22,11 +22,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden
+  overflow: hidden;
+  caret-color: transparent;
 }
 
 input {
-  @apply bg-slate-50 border rounded-md outline-none p-1 border-slate-300
+  @apply bg-slate-50 border rounded-md outline-none p-1 border-slate-300 caret-zinc-800
 }
 
 .default-button {
@@ -42,17 +43,17 @@ nav ul {
 }
 
 .chatbot-outter-layout {
-  @apply w-screen h-screen border bg-slate-100 flex flex-col items-center
+  @apply w-screen h-screen border bg-slate-100 flex flex-col items-center justify-between 
 }
 
 .chatbot-convo-frame {
-  @apply w-screen flex-1 bg-slate-100 px-4
+  @apply h-96 overflow-y-scroll bg-slate-100 px-8 sm:px-32 tracking-wide leading-loose
 }
 
 .chatbot-prompt-frame{
-  @apply w-5/6 mb-10 h-48 border bg-slate-200 px-4 flex flex-col justify-center items-center gap-4 rounded-3xl
+  @apply w-5/6 xl:w-3/5 mb-10 h-32 border bg-slate-200 px-4 flex flex-col justify-center gap-4 rounded-3xl
 }
 
 .chatbot-prompt-frame input{
-  @apply w-full h-28 bg-transparent border-transparent outline-none
+  @apply w-full h-full bg-transparent border-transparent outline-none
 }

@@ -99,7 +99,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   const refreshAccessToken = async () => {
     const refreshToken = localStorage.getItem('refreshToken')
     if (!refreshToken) {
-      console.error('No refresh token found.')
+      console.log('No refresh token found.')
       return null as string | null
     }
 
@@ -114,7 +114,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
       return newAccessToken
 
     } catch (error){
-      console.error(`Failed to Refresh Access Token: `, error)
+      console.log(`Failed to Refresh Access Token: `, error)
       return null
     }
   }
@@ -141,11 +141,11 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
           router.push('/')
           return response.data;
         } else {
-          console.error('Unable to refresh access token, please log in again.');
+          console.log('Unable to refresh access token, please log in again.');
           router.push('/auth/')
         }
       } else {
-        console.error('API request failed:', error);
+        console.log('API request failed:', error);
       }
     }
   };
