@@ -11,6 +11,7 @@ Readsify is an AI-powered web app that features an multi-filters book recommende
 - [License](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#license)
 
 ## Demo  
+https://github.com/user-attachments/assets/ee5cb61e-cd0a-47a5-a728-87a2ab1c0719
 
 ## Inspiration  
 Readsify started from a problem I’ve faced as a reader—spending more time searching for the perfect book than actually reading. It’s frustrating when the hunt for something enjoyable takes so much energy that it drains the excitement. That's why I developed Readsify, a web app that helps ease these common reader problems.
