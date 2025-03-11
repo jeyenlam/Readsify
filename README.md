@@ -37,11 +37,13 @@ Readsify started from a problem I’ve faced as a reader—spending more time se
 - [x] Authentication, authorization
 - [ ] Chatbot
   - [x] Funtional system implementation
+  - [ ] Book fine-tuned model
   - [ ] Intuitive styles + animation
 - [ ] Book Recommder System
   - [x] Preprocess dataset
   - [x] Book vector database
   - [x] Core system implementation
+  - [ ] Repreprocess dataset with mood classifier to implement mood filter 
   - [ ] Intuitive styles + animation
 - [x] Library
   - [x] Google Book API, search bar, book shelf
