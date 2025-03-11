@@ -4,34 +4,35 @@ import Navbar from '@/app/components/Navbar'
 import { Book as IBook } from '@/app/lib/interface'
 import axios from 'axios'
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Recommender = () => {
   const [descriptionQuery, setDescriptionQuery] = useState('')
   const [recommendedBooks, setRecommendedBooks] = useState<IBook[]>([
-    { "authors": ["Jamie Lee Curtis"],
-      "categories":["Juvenile Fiction"],
-      "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
-      "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-      "title": "Today I Feel Silly & Other Moods That Make My Day"
-    },
-    { "authors": ["Jamie Lee Curtis"],
-      "categories":["Juvenile Fiction"],
-      "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
-      "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-      "title": "Today I Feel Silly & Other Moods That Make My Day"
-    },
-    { "authors": ["Jamie Lee Curtis"],
-      "categories":["Juvenile Fiction"],
-      "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
-      "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-      "title": "Today I Feel Silly & Other Moods That Make My Day"
-    },
-    { "authors": ["Jamie Lee Curtis"],
-      "categories":["Juvenile Fiction"],
-      "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
-      "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-      "title": "Today I Feel Silly & Other Moods That Make My Day"
-    },
+    // { "authors": ["Jamie Lee Curtis"],
+    //   "categories":["Juvenile Fiction"],
+    //   "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
+    //   "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    //   "title": "Today I Feel Silly & Other Moods That Make My Day"
+    // },
+    // { "authors": ["Jamie Lee Curtis"],
+    //   "categories":["Juvenile Fiction"],
+    //   "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
+    //   "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    //   "title": "Today I Feel Silly & Other Moods That Make My Day"
+    // },
+    // { "authors": ["Jamie Lee Curtis"],
+    //   "categories":["Juvenile Fiction"],
+    //   "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
+    //   "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    //   "title": "Today I Feel Silly & Other Moods That Make My Day"
+    // },
+    // { "authors": ["Jamie Lee Curtis"],
+    //   "categories":["Juvenile Fiction"],
+    //   "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
+    //   "thumbnail":"http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    //   "title": "Today I Feel Silly & Other Moods That Make My Day"
+    // },
   ])
   const accessToken = localStorage.getItem('accessToken'); //temp
 
@@ -66,13 +67,19 @@ const Recommender = () => {
         </button>
       </form>
         
-      <div className='w-screen h-screen overflow-y-scroll p-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
+      <div className='w-screen overflow-y-scroll p-6 grid grid-cols-1 gap-4 xl:grid-cols-3'>
         {recommendedBooks &&
           recommendedBooks.map((book, index) => { return (
-          <div className={`relative p-2`} key={index}>
-            <div className={`${index == 0 || index == 1 || index == 2 ? 'block' : 'hidden'} px-3 py-1 rounded-full absolute bg-cyan-500 border-slate-800 shadow-md`}>{index+1}</div>
+          <motion.div
+            className={`relative p-2`}
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: index * 0.5 }}          
+          >
+            <div className={`${index == 0 || index == 1 || index == 2 ? 'block' : 'hidden'} font-semibold text-xl px-3 py-1 rounded-full absolute bg-cyan-500 border-slate-800 shadow-md`}>{index+1}</div>
             <Book book={book} fullyDisplayed={true}/>
-          </div>
+          </motion.div>
         )})}
       </div>   
     </div>

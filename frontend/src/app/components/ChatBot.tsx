@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import MessageContainer from './MessageContainer';
+import { motion } from 'framer-motion';
 
 const ChatBot = () => {
   const [query, setQuery] = React.useState('');
@@ -30,10 +31,10 @@ const ChatBot = () => {
         }
       );
 
+      setQuery('');
       const chatResponse = response.data.response;
 
       if (chatResponse) {
-        setQuery('');
         setMessages(prevMessages => [...prevMessages, { message: chatResponse, role: "chat" }]);
       }
 
@@ -45,7 +46,14 @@ const ChatBot = () => {
 
   return (
     <div className='chatbot-outter-layout'>
-      <h1 className='text-3xl tracking-wide font-semibold text-slate-600 p-4'>ChatReadsify👋</h1>
+      <h1 className='text-3xl tracking-wide font-semibold text-slate-600 p-4'>
+        ChatReadsify
+        <motion.span
+          animate={{ rotate: [-10, 15, -15, 10] }} // Rotates back and forth
+          transition={{ duration: 1}} // Loop animation
+          style={{ display: "inline-block" }} // Ensures rotation doesn't affect layout
+        >👋</motion.span>
+      </h1>
       <div className='chatbot-convo-frame'>
         <div className='xl:px-[15rem]'>
           { messages.map((message, index) => {
