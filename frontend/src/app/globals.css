@@ -31,7 +31,7 @@ input {
 }
 
 .default-button {
-  @apply px-2 border rounded-md bg-blue-600 text-white;
+  @apply px-2 border rounded-md bg-cyan-600 hover:bg-cyan-500 text-white;
 }
 
 nav {
