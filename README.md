@@ -8,7 +8,7 @@ Readsify is an AI-powered web app that features an multi-filters book recommende
 - [Built with](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#built-with)  
 - [Architecture](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#architecture)
 - [Task List](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#task-list)
-- [Setup & How to Run](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#setup-&-how-to-run)
+- [Setup & How to Run](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#setup-how-to-run)
 - [License](https://github.com/jeyenlam/Readsify?tab=readme-ov-file#license)
 
 ## Demo  
@@ -97,16 +97,20 @@ Readsify started from a problem I’ve faced as a reader—spending more time se
   ```
 7. Run server (in outer backend)
   ```
-  python manage.py runserver # to run django server
+  python manage.py runserver
   ```
 
 ### Frontend setup
-1. Create .env (in frontend)
+1. Navigate to ./frontend
+  ```
+  cd ./frontend
+  ```
+3. Create .env
   ```
   NEXT_PUBLIC_GOOGLE_BOOK_API_KEY=your_api_key
   NEXT_PUBLIC_BACKEND_API_URL=http://localhost:8000/api
   ```
-2. Run frontend
+3. Run frontend
   ```
   npm run dev
   ```
